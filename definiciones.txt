@@ -1,0 +1,6 @@
+api, interfaz, programa, Proceso, puertows, transacción, variable, tipos de datos (simples y compuestos), array (estructura datos)
+
+Interfaz: Método de comunicación entre dos sistemas
+Programa: Conjunto de instrucciones ordenadas
+Proceso: Programa en ejecución
+Página dinámica/estática: 
