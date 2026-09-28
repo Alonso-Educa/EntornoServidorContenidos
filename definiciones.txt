@@ -1,6 +1,20 @@
-api, interfaz, programa, Proceso, puertows, transacción, variable, tipos de datos (simples y compuestos), array (estructura datos)
+api, api rest, interfaz, programa, proceso, puerto, transacción, variable, tipos de datos (simples y compuestos), 
+array (estructura datos), patron singleton, compilado/interpretado
 
+API (Application Programming Interface): Conjunto de reglas que permite a dos aplicaciones comunicarse
+API REST: Conjunto de métodos HTTP (GET, POST, PUT, DELETE) que permiten a dos aplicaciones comunicarse
+JSon: Formato de archivo usado principalmente para el intercambio de datos, muy usado en las apis
 Interfaz: Método de comunicación entre dos sistemas
-Programa: Conjunto de instrucciones ordenadas
+Programa: Conjunto de instrucciones ordenadas para realizar una acción
 Proceso: Programa en ejecución
-Página dinámica/estática: 
+Página dinámica/estática: Una página dinámica ejecuta código en el servidor, una estática no (solo tiene código base)
+Puerto: Interfaz que permite la comunicación y transferencia de datos de forma aislada a través de una red
+Transacción: Transferencia de datos a través de la red
+Variable: Dato almacenado en un espacio en la memoria
+Array: Estructura que almacena un conjunto de datos ordenado del mismo tipo
+Tipos de datos: Define qué valores puede almacenar una variable y qué memoria ocupa y operaciones permite. Puede ser un tipo simple: 
+    int/float, char, bool o compuesto (conjunto de datos simples): string, array, diccionario. Estos datos pueden ser dinámicos o 
+    estáticos en función de si su estructura cambia durante la ejecución (en dinámico el espacio de memoria reservado es máximo).
+Patrón Singleton: Estructura de diseño donde una clase permite acceso global a todas las demás
+Lenguaje interpretado/compilado: Un lenguaje interpretado compila el código (a código binario) bloque a bloque usando un interprete, 
+    mientras que un lenguaje compilado lo traduce directamente en un ejecutable y luego lo ejecuta
