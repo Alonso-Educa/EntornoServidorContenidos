@@ -1,6 +1,8 @@
 api, api rest, interfaz, programa, proceso, puerto, transacción, variable, tipos de datos (simples y compuestos), 
 array (estructura datos), patron singleton, compilado/interpretado
 
+Añadir: parametro (elemento dentro de lsos parentesis que permiten parametrizar), listas/colas/pilas, algoritmo, sistema, puntero
+
 API (Application Programming Interface): Conjunto de reglas que permite a dos aplicaciones comunicarse
 API REST: Conjunto de métodos HTTP (GET, POST, PUT, DELETE) que permiten a dos aplicaciones comunicarse
 JSon: Formato de archivo usado principalmente para el intercambio de datos, muy usado en las apis
