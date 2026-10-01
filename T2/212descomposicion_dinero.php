@@ -1,5 +1,7 @@
 <?php
 
+// Rehacer el ejercicio usando array asociativo
+
 $dinero2 = 19888;
 $dinero = $dinero2;
 $i = 0;

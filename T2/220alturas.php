@@ -4,7 +4,6 @@ $alturas = ["Alonso" => 1.65, "Mauro" => 1.80, "Juan" => 1.72, "Juana" => 1.78, 
 <!DOCTYPE html>
 
 <head>
-    <meta charset="UTF-8">
     <title>Informacion de alturas</title>
 </head>
 
