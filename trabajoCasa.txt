@@ -12,3 +12,4 @@ Hacer ejercicios 216, 217, 219, 220, 221 y 211 (clase)
 Jueves 01/10:
 Subir ejercicios 211 (añadir array_sum) y 214 correctamente
 Corregir ejercicios ya hechos
+Hacer ejercicios 226 y 227
