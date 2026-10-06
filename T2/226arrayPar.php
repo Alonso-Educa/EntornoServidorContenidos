@@ -3,15 +3,11 @@
 // Una función que averigüe si un número es par: esPar(int $num): bool
 function esPar($num)
 {
-    if ($num % 2 == 0) {
-        echo "El numero, $num, es par.<br />";
-    } else {
-        echo "El numero, $num, es impar.<br />";
-    }
+    return $num%2;
 }
 echo 'Función esPar(int $num): bool</br>';
-esPar(12); // Par
-esPar(11); // impar
+echo"esPar (12): ".esPar(12)."</br>"; // Par
+echo"esPar (11): ".esPar(11)."</br>"; // impar
 
 // Una función que devuelva un array de tamaño $tam con números aleatorios comprendido entre $min y $max : 
 // arrayAleatorio(int $tam, int $min, int $max) : array

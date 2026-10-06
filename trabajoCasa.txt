@@ -10,6 +10,10 @@ Hacer ejercicio 214 atrasado
 Hacer ejercicios 216, 217, 219, 220, 221 y 211 (clase)
 
 Jueves 01/10:
-Subir ejercicios 211 (añadir array_sum) y 214 correctamente
+Subir ejercicios 211 (añadir array_sum y getType) y 214 correctamente
 Corregir ejercicios ya hechos
 Hacer ejercicios 226 y 227
+
+Martes 06/10:
+Leer libro 'Design Patterns: Elements of Reusable Object-Oriented Software' para patrones de diseño
+https://www.javier8a.com/itc/bd1/articulo.pdf
