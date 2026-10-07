@@ -17,3 +17,7 @@ Hacer ejercicios 226 y 227
 Martes 06/10:
 Leer libro 'Design Patterns: Elements of Reusable Object-Oriented Software' para patrones de diseño
 https://www.javier8a.com/itc/bd1/articulo.pdf
+
+Miércoles 07/10:
+Hacer hoja de ejercicios IV (terminar también la III si hay tiempo)
+Corregir ejercicios hechos en clase
