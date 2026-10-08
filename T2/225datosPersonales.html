@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Formulario saludo</title>
+    <meta charset="UTF-8">
+  </head>
+
+  <body>
+    <!-- escribe un programa que pida nombre, primer apellido, segundo apellido, email, año de nacimiento, teléfono, foto,... 
+     Después los mostrará por pantalla dentro de una tabla. -->
+    <form action="225datosPersonalesForm.php" method="POST">
+      <label for="nombre">Nombre: </label><br />
+      <input type="text" name="nombre" id="nombre" /><br />
+      <label for="apellido1">Primer apellido:</label><br />
+      <input type="text" name="apellido1" id="apellido1" /><br />
+      <label for="apellido2">Segundo apellido:</label><br />
+      <input type="text" name="apellido2" id="apellido2" /><br />
+      <label for="email">Email: </label><br />
+      <input type="text" name="email" id="email" /><br />
+      <label for="anio">Año: </label><br />
+      <input type="date" name="anio" id="anio" /><br />
+      <label for="tlf">Teléfono: </label><br />
+      <input type="text" name="tlf" id="tlf" /><br />
+      <label for="foto">Foto: </label><br />
+      <input type="file" name="foto" id="foto" /><br />
+      <input type="submit" value="Enviar" />
+    </form>
+  </body>
+</html>

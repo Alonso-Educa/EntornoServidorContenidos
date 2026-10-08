@@ -21,3 +21,9 @@ https://www.javier8a.com/itc/bd1/articulo.pdf
 Miércoles 07/10:
 Hacer hoja de ejercicios IV (terminar también la III si hay tiempo)
 Corregir ejercicios hechos en clase
+
+Jueves 08/10:
+Corregir ejercicio de cifrado cesar y resto de ejercicios de clase
+Hacer ejercicio 225 y arrayMultidimensionalAsocitivo
+Hacer ejercicios 236 - 240
+Instalar extensión php debug
