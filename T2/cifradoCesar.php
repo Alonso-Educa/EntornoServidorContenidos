@@ -2,22 +2,22 @@
 
 function cifradoCesar($s, $d)
 {
-    $s = str_split(strtolower($s));
+    $s = str_split($s);
     $a = [];
     $i = 0;
     foreach ($s as $valor) {
-        if ($valor >= ord('a') && $valor <= ord('a')) {
-            $valor = ord($valor) + $d;
+        $valor = ord($valor);
+        if ($valor >= ord('a') && $valor <= ord('z')) {
+            $valor += + $d;
             if ($valor > ord('z')) {
-                $valor -= ord('z') + ord('a') - 1;
+                $valor -= (ord('z') - ord('a') + 1);
             }
-        } else {
-            $valor = ord($valor) + $d;
+        } else if ($valor >= ord('A') && $valor <= ord('Z')) {
+            $valor += $d;
             if ($valor > ord('Z')) {
-                $valor -= ord('Z') + ord('A') - 1;
+                $valor -= (ord('Z') - ord('A') + 1);
             }
         }
-
         $a[$i] = chr($valor);
         $i++;
     }
@@ -28,19 +28,20 @@ function cifradoCesar($s, $d)
 
 function descifradoCesar($s, $d)
 {
-    $s = str_split(strtolower($s));
+    $s = str_split($s);
     $a = [];
     $i = 0;
     foreach ($s as $valor) {
-        if ($valor >= ord('a') && $valor <= ord('a')) {
-            $valor = ord($valor) - $d;
+        $valor=ord($valor);
+        if ($valor >= ord('a') && $valor <= ord('z')) {
+            $valor -= $d;
             if ($valor < ord('a')) {
-                $valor += ord('z') - ord('a') + 1;
+                $valor += (ord('z') - ord('a') + 1);
             }
-        } else {
-            $valor = ord($valor) + $d;
-            if ($valor > ord('Z')) {
-                $valor -= ord('Z') + ord('A') - 1;
+        } else if ($valor >= ord('A') && $valor <= ord('Z')) {
+            $valor -= $d;
+            if ($valor < ord('A')) {
+                $valor += (ord('Z') - ord('A') + 1);
             }
         }
 
