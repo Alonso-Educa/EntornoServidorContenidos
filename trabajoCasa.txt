@@ -27,3 +27,8 @@ Corregir ejercicio de cifrado cesar y resto de ejercicios de clase
 Hacer ejercicio 225 y arrayMultidimensionalAsocitivo
 Hacer ejercicios 236 - 240
 Instalar extensión php debug
+
+Martes 13/10:
+Corregir 240miContrasenya.php
+Actualizar definiciones
+Instalar y aprender a usar Zeal

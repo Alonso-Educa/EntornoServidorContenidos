@@ -1,6 +1,6 @@
 api, api rest, interfaz, programa, proceso, puerto, transacción, variable, tipos de datos (simples y compuestos), 
 array (estructura datos), patron singleton, compilado/interpretado, *algoritmos ordenacion, procedimiento*, funcion
-orm, metodologias (cascada, etc.), trello /gyra
+orm, metodologias (cascada, etc.), trello /gyra, parametro formal/real, clase/constructor, programacion en tiempo real
 
 Añadir: parametro (elemento dentro de lsos parentesis que permiten parametrizar), listas/colas/pilas, algoritmo, sistema, puntero
 
@@ -21,3 +21,5 @@ Tipos de datos: Define qué valores puede almacenar una variable y qué memoria 
 Patrón Singleton: Estructura de diseño donde una clase permite acceso global a todas las demás
 Lenguaje interpretado/compilado: Un lenguaje interpretado compila el código (a código binario) bloque a bloque usando un interprete, 
     mientras que un lenguaje compilado lo traduce directamente en un ejecutable y luego lo ejecuta
+    Clase: Abstracción de la realidad
+    Constuctor: Instanciación de una clase

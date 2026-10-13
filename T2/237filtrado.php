@@ -3,7 +3,7 @@
 function paresArray($a){
     $pares=[];
     foreach($a as $valor){
-        if($valor%2==0){
+        if(is_numeric($valor) && $valor%2==0){
             array_push($pares,$valor);
         }
     }
