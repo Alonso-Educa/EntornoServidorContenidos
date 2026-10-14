@@ -1,6 +1,7 @@
 api, api rest, interfaz, programa, proceso, puerto, transacción, variable, tipos de datos (simples y compuestos), 
 array (estructura datos), patron singleton, compilado/interpretado, *algoritmos ordenacion, procedimiento*, funcion
 orm, metodologias (cascada, etc.), trello /gyra, parametro formal/real, clase/constructor, programacion en tiempo real
+modularidad, encapsulación, serialización
 
 Añadir: parametro (elemento dentro de lsos parentesis que permiten parametrizar), listas/colas/pilas, algoritmo, sistema, puntero
 
