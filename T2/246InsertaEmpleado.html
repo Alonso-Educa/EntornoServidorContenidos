@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Crear empleado</title>
+</head>
+
+<body>
+    <!-- 
+        crea un programa que permita al usuario leer un conjunto de números separados por espacios. El programa filtrará 
+        los números leídos para volver a mostrar únicamente los números pares e indicará la cantidad existente.
+
+        Dame números: 1 4 7 9 23 10 8
+        Los 3 números pares son: 4 10 8
+    -->
+    <p>
+        Introduce números en el formulario de abajo para filtrar los pares. Los
+        números deben estar separados por espacios.
+    </p>
+
+    <form action="245EmpleadoSueldo.php" method="POST">
+        <label for="nom">Nombre*: </label><br />
+        <input type="text" name="nom" id="nom" required /><br />
+        <label for="ape">Apellido(s)*: </label><br />
+        <input type="text" name="ape" id="ape" required /><br />
+        <label for="sue">Sueldo: </label><br />
+        <input type="text" name="sue" id="sue" /><br />
+        <input type="submit" value="Enviar" />
+    </form>
+</body>
+
+</html>
