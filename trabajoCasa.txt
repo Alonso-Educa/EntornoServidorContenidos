@@ -36,3 +36,7 @@ Instalar y aprender a usar Zeal
 Miercoles 14/10:
 Buscar quien es manuel benito
 Hacer lista ejercicios I
+
+Jueves 15/10:
+Hacer ejercicios II
+Modificar clase Persona para que muestre años con Date en base al año almacenado

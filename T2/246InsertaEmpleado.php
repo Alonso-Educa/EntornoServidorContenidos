@@ -18,6 +18,8 @@ echo "<table border = '1'>";
 echo "<tr><th>Nombre</th><td>" . $e->getNombre() . "</td></tr>";
 echo "<tr><th>Apellido</th><td>" . $e->getApellidos() . "</td></tr>";
 echo "<tr><th>Sueldo</th><td>" . $e->getSueldo() . "</td></tr>";
+echo "<tr><th>Telefonos</th><td>" . $e->listarTelefonos() . "</td></tr>";
+echo "<tr><th>Debe pagar impuestos</th><td>" . ($e->debePagarImpuestos() ? "Debe pagar impuestos" : "No debe pagar impuestos") . "</td></tr>";
 echo "</table>";
 echo $e->getDatosCompleto();
 ?>

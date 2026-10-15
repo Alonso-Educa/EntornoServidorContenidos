@@ -5,6 +5,7 @@
 //     Obtener datos completos → getDatosCompleto(): string
 //     Que devuelva un booleano indicando si debe o no pagar impuestos (se pagan cuando el sueldo es superior a 1500€) → debePagarImpuestos(): bool
 
+// Corregir la validación de datos
 class Empleado
 {
     private string $nombre;
@@ -16,7 +17,11 @@ class Empleado
     {
         $this->nombre = ucfirst($nom);
         $this->apellidos = ucfirst($ape);
-        $this->sueldo = $sue;
+        if (is_numeric($sue)) {
+            $this->sueldo = $sue;
+        } else {
+            $this->sueldo = 0;
+        }
     }
 
     // Getters
@@ -49,7 +54,11 @@ class Empleado
 
     public function setSueldo(float $sue)
     {
-        $this->sueldo = $sue;
+        if (is_numeric($sue)) {
+            $this->sueldo = $sue;
+        } else {
+            $this->sueldo = 0;
+        }
     }
 
     public function getDatosCompleto(): string
@@ -59,25 +68,28 @@ class Empleado
 
     public function debePagarImpuestos(): bool
     {
-        if($this->sueldo>1500){
+        if ($this->sueldo > 1500) {
             return true;
-        }else{
+        } else {
             return false;
-        } 
+        }
     }
 }
 
-$e1= new Empleado("Juan", "Pepe", 1667);
-$e2= new Empleado("Alonso", "Rogado", 100);
+$e1 = new Empleado("Juan", "Pepe", 1667);
+$e2 = new Empleado("Alonso", "Rogado", 100);
 
 echo $e1->getDatosCompleto();
 echo $e2->getDatosCompleto();
 
-echo $e1->getNombre()." debe pagar impuestos: ";
+echo $e1->getNombre() . " debe pagar impuestos: ";
 var_dump($e1->debePagarImpuestos());
-echo"<br>";
+echo "<br>";
 
-echo $e2->getNombre()." debe pagar impuestos: ";
+echo $e2->getNombre() . " debe pagar impuestos: ";
 var_dump($e2->debePagarImpuestos());
-echo"<br>";
+echo "<br>";
+
+$e3 = new Empleado(1,"juan","pepe");
+echo $e3->getDatosCompleto();
 ?>
