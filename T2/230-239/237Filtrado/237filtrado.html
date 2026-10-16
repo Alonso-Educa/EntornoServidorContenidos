@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Numeros pares</title>
+  </head>
+  <body>
+    <!-- 
+        crea un programa que permita al usuario leer un conjunto de números separados por espacios. El programa filtrará 
+        los números leídos para volver a mostrar únicamente los números pares e indicará la cantidad existente.
+
+        Dame números: 1 4 7 9 23 10 8
+        Los 3 números pares son: 4 10 8
+    -->
+    <p>
+      Introduce números en el formulario de abajo para filtrar los pares. Los
+      números deben estar separados por espacios.
+    </p>
+
+    <form action="237filtrado.php" method="POST">
+      <label for="numeros">Dame números: </label><br />
+      <input type="text" name="numeros" id="numeros" /><br />
+      <input type="submit" value="Enviar" />
+    </form>
+  </body>
+</html>
