@@ -23,8 +23,4 @@ function busca_capital($pais='')
     }
 }
 
-busca_capital();
-busca_capital("España");
-busca_capital("China");
-busca_capital("Alemania");
 ?>

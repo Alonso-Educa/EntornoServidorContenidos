@@ -38,16 +38,17 @@ function crearCSV()
 {
     $palabras = func_get_args();
     foreach ($palabras as $valor) {
-        $csv = explode(" ",$valor);
+        $csv = explode(" ", $valor);
         print_r($csv);
     }
 }
-crearCSV('hola','a',456,79,'a2');
+crearCSV('hola', 'a', 456, 79, 'a2');
 
-function concatenar (...$palabras){
-    $texto='';
-    foreach ($palabras as $palabra){
-        if($texto !== ''){
+function concatenar(...$palabras)
+{
+    $texto = '';
+    foreach ($palabras as $palabra) {
+        if ($texto !== '') {
             $texto += ',';
         }
         $texto = $texto . $palabra;
@@ -57,7 +58,8 @@ function concatenar (...$palabras){
 }
 
 // terminar
-function csv($frase){
-return str_replace();
+function csv($frase)
+{
+    return str_replace();
 }
 ?>

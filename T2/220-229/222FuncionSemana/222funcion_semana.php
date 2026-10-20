@@ -27,9 +27,7 @@ function dia_cine()
             $dia = "domingo";
             break;
     }
-
     return $dia;
 }
 
-echo "Esta semana voy a ir al cine el ".dia_cine();
 ?>
