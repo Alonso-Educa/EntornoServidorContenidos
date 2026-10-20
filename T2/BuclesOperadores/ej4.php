@@ -11,16 +11,14 @@ function calcularPago($n)
     if (is_numeric($n)) {
         foreach ($b as $valor) {
             if ($n < $valor) {
-                return "Billetes/monedas de $valor: " . ceil($n / $valor);
+                return ceil($n / $valor)." billetes/monedas de $valor";
             }
         }
     }
-    return "Billetes/monedas de 500: " . ceil($n / 500);
+    return ceil($n / 500) . " billetes de 500";
 }
 
 $n = $_POST["pago"];
 
-echo "Para pagar $n € se necesitan ";
-calcularPago($n);
-echo "€.";
+echo "Para pagar $n € se necesitan " . calcularPago($n) . " €.";
 ?>
