@@ -1,44 +1,32 @@
 <?php
 
-// Haz una función que genere números aleatorios que se le pase como parámetros:
+// correccion: probar el ejercicio en nuevo fichero
+include_once('ej2funciones.php');
 
-// a. Array para lo rellene con los números
-// b. Número mínimo incluido
-// c. Número máximo incluido
-// d. Numero de números generados
-// e. True si puedes repetirse/ False si no pueden repetirse
-function rellenarArray($a, $min, $max, $cant, $bool)
-{
-    if($bool && $cant >$max){
-        return "Error";
-    }
-    for ($i = 0; $i < $cant; $i++) {
-        if ($bool) {
-            $n = rand($min, $max);
-            array_push($a, $n);
-        } else {
-            do {
-                $n = rand($min, $max);
-            } while (array_search($n, $a));
-            array_push($a, $n);
-        }
-    }
-    return $a;
-}
+$a = [];
+$b = [];
+$c = [];
 
-$a=[];
-$b=[];
-$a=rellenarArray($a,1,10,10,true);
+$a = rellenarArray($a, 1, 10, 10, true);
 echo "Valores: ";
-foreach($a as $valor){
-    echo $valor." ";
+foreach ($a as $valor) {
+    echo $valor . " ";
 }
 
 echo "<br>";
 
-$b=rellenarArray($b,1,10,10,false);
+$b = rellenarArray($b, 5, 10, 3, false);
 echo "Valores: ";
-foreach($b as $valor){
-    echo $valor." ";
+foreach ($b as $valor) {
+    echo $valor . " ";
+}
+echo "<br>";
+
+// correccion decasa
+// nuevo caso probando el caso de error
+$c = rellenarArray($c, 1, 10, 100, false);
+echo "Valores: ";
+foreach ($c as $valor) {
+    echo $valor . " ";
 }
 ?>

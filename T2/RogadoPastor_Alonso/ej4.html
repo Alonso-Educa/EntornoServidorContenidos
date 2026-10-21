@@ -25,19 +25,27 @@
         <label for="dni">DNI: </label><br />
         <input type="text" name="dni" id="dni" required /><br />
 
-        <!-- No funciona -->
+        <!-- Correccion de casa -->
+        <!-- declarado como array el campo de asignatura para que se recojan todos los valores -->
+        <!-- añadido campo value porque sino no se recoge nada -->
         <label for="asi">Asignaturas: </label><br />
-        <input type="checkbox" id="asig1" name="asi">
+        <input type="checkbox" id="asig1" name="asi[]" value="Entorno Servidor">
         <label for="asig1">Entorno Servidor</label><br>
-        <input type="checkbox" id="asig2" name="asi">
+        <input type="checkbox" id="asig2" name="asi[]" value="Entorno Cliente">
         <label for="asig2">Entorno Cliente</label><br>
-        <input type="checkbox" id="asig3" name="asi">
+        <input type="checkbox" id="asig3" name="asi[]" value="Frameworks">
         <label for="asig3">Frameworks</label><br>
 
         <label for="ema">Email: </label><br />
         <input type="email" name="ema" id="ema" required /><br />
         <input type="submit" value="Enviar" />
     </form>
+    <table border='1'>
+        <tr>
+            <td><span style='color:red'>Rojo</span></td>
+            <td>No rojo</td>
+        </tr>
+    </table>
 </body>
 
 </html>

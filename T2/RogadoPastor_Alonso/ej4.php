@@ -13,17 +13,19 @@ include_once('validaciones.php');
 // Si hay alguno de los campos del formulario que no están correctos, se muestra un
 // mensaje en rojo.
 
-$nom = $_POST["nom"];
-$ape = $_POST["ape"];
-$fec = $_POST["fec"];
-$dni = $_POST["dni"];
-// $asi = $_POST["asi"];
-$ema = $_POST["ema"];
+// correccion: poner ?? por si vienen vacios y que no de error
+$nom = $_POST["nom"] ?? "";
+$ape = $_POST["ape"] ?? "";
+$fec = $_POST["fec"] ?? "";
+$dni = $_POST["dni"] ?? "";
+$asi = $_POST["asi"] ?? [];
+$ema = $_POST["ema"] ?? "";
 
-echo validaNombre($nom) ?  "Formato de nombre correcto" : "Formato de nombre incorrecto";
-echo validaApe($ape) ? "Formato de apellido correcto" : "Formato de apellido incorrecto";
-echo validaFec($fec) ? "Formato de fecha correcto" : "Formato de fecha incorrecto";
-echo validaDni($dni) ? "Formato de dni correcto" : "Formato de dni incorrecto";
-// echo validaAsi($asi) ? "Formato de asignatura correcto" : "Formato de asignatura incorrecto";
-echo validaEma($ema) ? "Formato de email correcto" : "Formato de email incorrecto";
+// correccion: imprimir los campos que fallan en rojo
+echo validaNombre($nom) ?  "Formato de nombre correcto<br>" : "<p style='color:red'>Formato de nombre incorrecto</p>";
+echo validaApe($ape) ? "Formato de apellido correcto<br>" : "<p style='color:red'>Formato de apellido incorrecto</p>";
+echo validaFec($fec) ? "Formato de fecha correcto<br>" : "<p style='color:red'>Formato de fecha incorrecto</p>";
+echo validaDni($dni) ? "Formato de dni correcto<br>" : "<p style='color:red'>Formato de dni incorrecto</p>";
+echo validaAsi($asi) ? "Formato de asignatura correcto<br>" : "<p style='color:red'>Formato de asignatura incorrecto</p>";
+echo validaEma($ema) ? "Formato de email correcto<br>" : "<p style='color:red'>Formato de email incorrecto</p>";
 ?>
