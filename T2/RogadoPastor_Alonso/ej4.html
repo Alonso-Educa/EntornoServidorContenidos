@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Generar tabla</title>
+</head>
+
+<!-- // Genera un formulario que contenga:
+// a. Nombre
+// b. Apellidos
+// c. Fecha en un formato que tu elijas
+// d. DNI
+// e. Selecciona las asignaturas check (Al menos 3)
+// f. Correo electrónico -->
+
+<body>
+    <form action="ej4.php" method="POST">
+        <label for="nom">Nombre: </label><br />
+        <input type="text" name="nom" id="nom" required /><br />
+        <label for="ape">Apellido(s): </label><br />
+        <input type="text" name="ape" id="ape" required /><br />
+        <label for="fec">Fecha: </label><br />
+        <input type="date" name="fec" id="fec" required /><br />
+        <label for="dni">DNI: </label><br />
+        <input type="text" name="dni" id="dni" required /><br />
+
+        <!-- No funciona -->
+        <label for="asi">Asignaturas: </label><br />
+        <input type="checkbox" id="asig1" name="asi">
+        <label for="asig1">Entorno Servidor</label><br>
+        <input type="checkbox" id="asig2" name="asi">
+        <label for="asig2">Entorno Cliente</label><br>
+        <input type="checkbox" id="asig3" name="asi">
+        <label for="asig3">Frameworks</label><br>
+
+        <label for="ema">Email: </label><br />
+        <input type="email" name="ema" id="ema" required /><br />
+        <input type="submit" value="Enviar" />
+    </form>
+</body>
+
+</html>

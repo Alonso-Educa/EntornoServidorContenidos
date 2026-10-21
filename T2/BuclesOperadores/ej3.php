@@ -23,14 +23,14 @@ for ($i = 0; $i < FILAS; $i++) {
     }
     echo "<br>";
 }
-for ($i = FILAS - 1; $i > 0; $i--) {
-    for ($j = 0; $j < FILAS - $i; $j++) {
+for ($i = FILAS - 2; $i >= 0; $i--) {
+    for ($j = 0; $j < FILAS - $i - 1; $j++) {
         echo "&ensp;";
     }
 
-    if ($i != 1) {
+    if ($i != 0) {
         echo "*";
-        for ($j = 0; $j < ($i - 1) * 2 - 1; $j++) {
+        for ($j = 0; $j < $i * 2 - 1; $j++) {
             echo "&ensp;";
         }
         echo "*";
