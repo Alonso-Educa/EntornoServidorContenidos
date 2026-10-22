@@ -17,11 +17,8 @@ function h1($s)
 // c. p(cadena) Pinta la cadena entre cadenas
 function p($s)
 {
-    // correccion de casa
-    // uso de cracerteres especiales para mostrar las etiquetas correctamente y que no se las trague
-    echo htmlspecialchars("<$s>");
-    echo $s;
-    echo htmlspecialchars("</$s>");
+    // correccion de clase
+    echo "<p>$s</p>";
 }
 
 // d. letraDni() Se introduce el dni y devuelve la letra que le corresponde

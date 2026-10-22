@@ -7,10 +7,12 @@
 // c. Número máximo incluido
 // d. Numero de números generados
 // e. True si puedes repetirse/ False si no pueden repetirse
-function rellenarArray($a, $min, $max, $cant, $bool)
+
+// el array se pasa por referencia
+function rellenarArray(&$a, $min, $max, $cant, $bool)
 {
-    // correccion de casa
-    // el boolean estaba al revés. También se pasa el texto como array para que se muestre más cómodamente
+    // Correccion: el boolean estaba al revés. 
+    // También se pasa el texto como array para que se muestre más cómodamente
     if (!$bool && $cant > $max) {
         return ["Error con las condiciones introducidas."];
     }
@@ -21,13 +23,11 @@ function rellenarArray($a, $min, $max, $cant, $bool)
         } else {
             do {
                 $n = rand($min, $max);
-                // correccion de casa
-                // cambiado array_search por in_array para que funcione lo de no repetir
+                // Correccion: cambiado array_search por in_array para que funcione lo de no repetir
             } while (in_array($n, $a));
             array_push($a, $n);
         }
     }
-    return $a;
 }
 
 ?>
