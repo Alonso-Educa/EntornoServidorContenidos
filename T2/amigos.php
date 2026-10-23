@@ -23,18 +23,31 @@ function isAmigo($num1, $num2)
     $div1 = [];
     $div2 = [];
 
-    for ($i = 1; $i < max([$num1, $num2]); $i++) {
-        if ($num1 % $i == 0 && $num1 != $i)
+    for ($i = 1; $i < max($num1, $num2); $i++) {
+        if ($num1 % $i == 0 && $num1 != $i) {
             array_push($div1, $i);
-
-        if ($num2 % $i == 0 && $num2 != $i)
+        }
+        if ($num2 % $i == 0 && $num2 != $i) {
             array_push($div2, $i);
+        }
     }
 
-    return array_sum($div1) === array_sum($div2) ? "$num1 y $num2 son numeros amigos<br>" : "$num1 y $num2 no son numeros amigos<br>";
+    echo "Divisores de n1: ";
+    print_r($div1);
+    echo "<br>Divisores de n2: ";
+    print_r($div2);
+    echo "<br>";
+    echo "Suma de n1: " . array_sum($div1) . ", suma de n2: " . array_sum($div2) . "<br>";
+
+    return ($num2 == array_sum($div1)) && ($num1 == array_sum($div2)) ? "Son numeros amigos<br>" : "No son numeros amigos<br>";
 }
 
-echo "220 y 284: " . isAmigo(220, 284);
-echo "220 y 285: " . isAmigo(220, 285);
-echo "1184 y 1210: " . isAmigo(1184, 1210);
+if (isset($num1, $num2) && is_numeric($num1) && is_numeric($num2)) {
+    echo "n1: " . $num1 . ", n2: " . $num2 . "<br>";
+    echo isAmigo($num1, $num2);
+}
+
+// echo "220 y 284: " . isAmigo(220, 284);
+// echo "220 y 285: " . isAmigo(220, 285);
+// echo "1184 y 1210: " . isAmigo(1184, 1210);
 ?>
