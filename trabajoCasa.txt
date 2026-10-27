@@ -43,3 +43,6 @@ Modificar clase Persona para que muestre años con Date en base al año almacena
 
 Martes 20/10:
 Terminar ejercicios bucles y arrays
+
+Martes 27/10:
+Terminar y corregir ejercicios de tarea
