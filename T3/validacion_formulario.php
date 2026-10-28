@@ -35,7 +35,7 @@ echo "Contraseña: " . $con . "<br>";
 echo "Documento: " . $doc . "<br>";
 
 $validacionesExistencia = [isset($nom), isset($ab), isset($an), isset($fec), isset($rad), isset($sel), isset($che), isset($tel), isset($ema), isset($con), isset($doc)];
-$validacionesFormato = [validarFormato($fec, '/^[1-2]\d{3}-[0-1]\d-[0-3]\d$/'), validarFormato($rad, '/^Opcion[^1]$/'), count($che) > 0 && count($che) < 4, validarFormato($tel, '/^[69]\d{8}$/'),validarFormato($ema, '/^\w+@\w+\.\w+$/')];
+$validacionesFormato = [validarFormato($fec, '/^[1-2]\d{3}-[0-1]\d-[0-3]\d$/'), validarFormato($rad, '/^Opcion[^1]$/'), count($che) > 0 && count($che) < 4, validarFormato($tel, '/^[69]\d{8}$/'),validarFormato($ema, '/^.{1,}@.{1,}\..{2,}$/')];
 
 function validarFormato($s, $exp)
 {
