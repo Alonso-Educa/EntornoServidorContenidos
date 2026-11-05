@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Formulario de datos personales</title>
+</head>
+
+<body>
+    <h1>Datos personales</h1>
+
+    <form action="301datosPersonales.php" method="post" enctype="multipart/form-data">
+
+        <!-- Información "oculta": tamaño máximo de los ficheros (2 MB).
+             Debe ir ANTES de los input de tipo file. -->
+        <input type="hidden" name="MAX_FILE_SIZE" value="2097152">
+
+        <fieldset>
+            <legend>Datos básicos</legend>
+
+            <label for="nombre">Nombre: </label>
+            <input type="text" id="nombre" name="nombre" required>
+
+            <label for="ape1">Primer apellido: </label>
+            <input type="text" id="ape1" name="ape1" required>
+
+            <label for="ape2">Segundo apellido: </label>
+            <input type="text" id="ape2" name="ape2" required>
+            <br>
+
+            <label for="dni">DNI: </label>
+            <input type="text" id="dni" name="dni" required>
+
+            <label for="ema">Email: </label>
+            <input type="email" id="ema" name="ema" required>
+            <br>
+
+            <label for="fec">Fecha de nacimiento: </label>
+            <input type="date" id="fec" name="fec" required>
+
+            <label for="tel">Teléfono: </label>
+            <input type="tel" id="tel" name="tel" required>
+        </fieldset>
+
+        <fieldset>
+            <legend>Sexo</legend>
+            <input type="radio" id="sexoH" name="sexo" value="Hombre" required>
+            <label for="sexoH">Hombre</label>
+            <input type="radio" id="sexoM" name="sexo" value="Mujer">
+            <label for="sexoM">Mujer</label>
+            <input type="radio" id="sexoO" name="sexo" value="Otro">
+            <label for="sexoO">Otro</label>
+        </fieldset>
+
+        <fieldset>
+            <legend>Formación</legend>
+
+            <label for="est">Estudios: </label>
+            <select id="est" name="est" required>
+                <option value="">Selecciona uno</option>
+                <option value="ESO">ESO</option>
+                <option value="Bachillerato">Bachillerato</option>
+                <option value="FP Grado Medio">FP Grado Medio</option>
+                <option value="FP Grado Superior">FP Grado Superior</option>
+                <option value="Universitarios">Universitarios</option>
+                <option value="Otros">Otros</option>
+            </select>
+            <br>
+            <label>Idiomas: </label>
+            <input type="checkbox" id="idEs" name="idi[]" value="Español">
+            <label for="idEs">Español</label>
+            <input type="checkbox" id="idEn" name="idi[]" value="Inglés">
+            <label for="idEn">Inglés</label>
+            <input type="checkbox" id="idFr" name="idi[]" value="Francés">
+            <label for="idFr">Francés</label>
+            <input type="checkbox" id="idDe" name="idi[]" value="Alemán">
+            <label for="idAl">Alemán</label>
+            <input type="checkbox" id="idOt" name="idi[]" value="Otros">
+            <label for="idOt">Otros</label>
+        </fieldset>
+
+        <fieldset>
+            <legend>Documentos (máximo 2 MB cada uno)</legend>
+
+            <label for="foto">Foto (PNG, JPG, GIF o WebP)</label>
+            <input type="file" id="foto" name="foto"
+                accept=".png,.jpg,.jpeg,.gif,.webp,image/png,image/jpeg,image/gif,image/webp" required>
+            <br>
+
+            <label for="cv">Currículum (PDF)</label>
+            <input type="file" id="cv" name="cv" accept=".pdf,application/pdf" required>
+        </fieldset>
+
+        <input type="submit" name="submit" value="Enviar">
+        <input type="reset" value="Borrar">
+    </form>
+</body>
+
+</html>
