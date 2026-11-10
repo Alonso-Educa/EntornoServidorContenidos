@@ -1,66 +1,78 @@
 <?php
 
-// leer datos
-// agenda es una matriz bidimensional pasada como texto
-$agenda = $_POST["agenda"];
-$nom = $_POST["nom"];
-$tel = $_POST["tel"];
-$errorNom = $_POST["errorNom"];
-$errorTel = $_POST["errorTel"];
+// procesa solo se ejecuta cuando llegan datos por POST
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-$correcto = "v";
-$errores = [];
-if (isset($_POST["agenda"])) {
-    $agenda = explode(",", $_POST["agenda"]);
-}
+    function filtrado($datos)
+    {
+        $datos = trim($datos); // Elimina espacios antes y después de los datos
+        $datos = stripslashes($datos); // Elimina backslashes \
+        $datos = htmlspecialchars($datos); // Traduce caracteres especiales en entidades HTML
+        return $datos;
+    }
 
-for ($i = 0; $i < count($agendaCopia); $i++) {
-    $agendaCopia[$i] = explode("-", $agendaCopia[$i]);
-}
+    $correcto = "v";
+    $agenda = $_POST["agenda"] ?? [];
 
-$errorNom = "";
-$nom = "";
-if (!isset($_GET["nom"])) {
-    $correcto = "f";
-    $errorNom = "El nombre no puede estar vacio";
-} else {
-    $nom = stripslashes(trim($_POST["nom"]));
-}
-
-$errorTel = "v";
-$tel = "";
-if (isset($_GET["tel"])) {
-    $tel = $_GET["tel"];
-    if (!preg_match('/^[679]\d{8}$/', $tel)) {
+    $errorNom = "";
+    $nom = "";
+    // valida que el nombre exista y no esté vacío
+    if (empty($_POST["nom"])) {
         $correcto = "f";
-        $errorTel = "El telefono no tiene formato correcto";
+        $errorNom = "El nombre no puede estar vacio";
     } else {
-        $tel = stripslashes(trim($_POST["tel"]));
+        $nom = filtrado($_POST["nom"]);
     }
-}
 
-// valida que no haya errores con los datos
-if ($errorNom == "" && $errorTel == "") {
-    // recorre el bucle
-    $estaNom = false;
-    for ($i = 0; $i < count($agenda); $i++) {
-        // si hay nombre repetido y telefono existe, sobreescribe el telefono
-        if ($agenda[$i][0] === $nom && isset($tel)) {
-            $agenda[$i][1] = $tel;
-            $estaNom = true;
-        }
-        // si hay nombre repetido y telefono no existe, borra los datos
-        else if ($agenda[$i][0] === $nom && !isset($tel)) {
-            $agenda[$i] = ["", ""];
-            $estaNom = true;
+    $errorTel = "";
+    $tel = "";
+    if (!empty($_POST["tel"])) {
+        $tel = filtrado($_POST["tel"]);
+        // valida formato de teléfono
+        if (!preg_match('/^[679]\d{8}$/', $tel)) {
+            $correcto = "f";
+            $errorTel = "El telefono no tiene formato correcto";
         }
     }
 
-    // si el nombre no estaba en el array lo añade al final
-    if (!$estaNom) {
-        array_push($agenda, [$nom, $tel]);
+    // valida que no haya errores con los datos
+    if ($errorNom == "" && $errorTel == "") {
+        // si el telefono existe
+        if ($tel === "") {
+            // si esta vacio borra el contacto
+            unset($agenda[$nom]);
+        } else {
+            // si no existe el telefono añade el contacto nuevo o sobrescribe el telefono que habia
+            $agenda[$nom] = $tel;
+        }
     }
+
+    // redirige a este mismo archivo (por GET) con los datos
+    $http = "Location: " . $_SERVER["PHP_SELF"] . "?";
+    $http .= "nom=" . urlencode($nom);
+    $http .= "&errorNom=" . urlencode($errorNom);
+    $http .= "&tel=" . urlencode($tel);
+    $http .= "&errorTel=" . urlencode($errorTel);
+
+    // Se recorre el array por clave-valor: $nombre => $telefono
+    foreach ($agenda as $n => $t) {
+        $http .= "&agenda[" . urlencode($n) . "]=" . urlencode($t);
+    }
+
+    header($http);
+    exit;
 }
+
+// muestra los datos en el html
+
+// leer datos
+$nom = strip_tags($_GET["nom"] ?? "");
+$tel = strip_tags($_GET["tel"] ?? "");
+$errorNom = strip_tags($_GET["errorNom"] ?? "");
+$errorTel = strip_tags($_GET["errorTel"] ?? "");
+
+// agenda es un array asociativo pasado con pares clave-valor: nombre => telefono
+$agenda = $_GET["agenda"] ?? [];
 
 ?>
 
@@ -70,46 +82,39 @@ if ($errorNom == "" && $errorTel == "") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Practica 3</title>
+    <title>Practica de examen: Agenda</title>
 </head>
 
 <body>
-    <textarea disabled>
-        <?php
-        // if ($agenda != []) {
-        //     $agendaNuevo = explode(",", $agenda);
-        //     foreach ($agendaNuevo as $dato) {
-        //         $datos = explode("-", $dato);
-        //         print_r($datos);
-        //         echo "<br>";
-        //         // echo $datos[0] . " - " . $datos[1] . "<br>";
-        //     }
-        // }
-        
-        echo $agenda;
+    <textarea disabled><?php
+    if (!empty($agenda)) {
+        foreach ($agenda as $n => $t) {
+            echo htmlspecialchars($n) . " - " . htmlspecialchars($t) . "\n";
+        }
+    }
+    ?></textarea>
 
-        ?>
-    </textarea>
-
-    <!-- <form action="leerAgenda.php" method="post"> -->
     <form action="<?= htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="post">
-        <input type="hidden" name="agenda" value="<?php echo $agenda; ?>">
+        <!-- Un foreach de inputs porque un array no se puede pasar en un input -->
+        <?php foreach ($agenda as $n => $t): ?>
+            <input type="hidden" name="agenda[<?= htmlspecialchars($n) ?>]" value="<?= htmlspecialchars($t) ?>">
+        <?php endforeach; ?>
+
         <label for="nom">Nombre: </label>
-        <input type="text" name="nom" id="nom" value="<?php if ($nom != "") {
-            echo $nom;
-        } ?>">
-        <?php if ($errorNom != "") {
-            echo "<p style='color='red'>" . $errorNom . "</p>";
+        <input type="text" name="nom" id="nom" value="<?= htmlspecialchars($nom) ?>">
+        <?php
+        if ($errorNom != "") {
+            echo "<span style='color: red;'>" . $errorNom . "</span>";
         }
         ?>
+
         <label for="tel">Telefono:</label>
-        <?php if ($errorTel != "") {
-            echo "<p style='color='red'>" . $errorTel . "</p>";
+        <input type="number" id="tel" name="tel" value="<?= htmlspecialchars($tel) ?>">
+        <?php
+        if ($errorTel != "") {
+            echo "<span style='color: red;'>" . $errorTel . "</span>";
         }
         ?>
-        <input type="number" id="tel" name="tel" value="<?php if ($tel != "") {
-            echo $tel;
-        } ?>">
 
         <button type="submit">Enviar</button>
     </form>

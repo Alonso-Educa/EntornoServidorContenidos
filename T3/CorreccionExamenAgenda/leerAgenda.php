@@ -10,21 +10,21 @@ function filtrado($datos)
 
 $correcto = "v";
 $errores = [];
-$agenda = isset($_POST["agenda"]) ?? [];
+$agenda = $_POST["agenda"] ?? [];
 
 $errorNom = "";
 $nom = "";
-// valida si nombre existe
-if (!isset($_POST["nom"])) {
+// valida si nombre existe y no esta vacio
+if (empty($_POST["nom"])) {
     $correcto = "f";
     $errorNom = "El nombre no puede estar vacio";
 } else {
     $nom = filtrado($_POST["nom"]);
 }
 
-$errorTel = "v";
+$errorTel = "";
 $tel = "";
-if (isset($_POST["tel"])) {
+if (!empty($_POST["tel"])) {
     $tel = $_POST["tel"];
     // valida formato de teléfono
     if (!preg_match('/^[679]\d{8}$/', $tel)) {
@@ -37,37 +37,25 @@ if (isset($_POST["tel"])) {
 
 // valida que no haya errores con los datos
 if ($errorNom == "" && $errorTel == "") {
-    // si el nombre existe
-    if (!isset($agenda[$nom])) {
-        // si el nombre no está se introduce el valor
-        $agenda[$nom] = $tel;
+    // si el telefono existe
+    if ($tel === "") {
+        // si esta vacio borra el contacto
+        unset($agenda[$nom]);
     } else {
-        if (isset($tel)) {
-            // si el telefono existe, sobreescribe el telefono
-            $agenda[$nom] = $tel;
-        } else {
-            // si el telefono no existe, borra los datos del array
-            unset($agenda[$nom]);
-        }
+        // si no existe el telefono añade el contacto nuevo o sobrescribe el telefono que habia
+        $agenda[$nom] = $tel;
     }
 }
 
 $http = "Location:agendaForm.php?";
-if ($correcto != "v") {
-    $http .= "nom=" . urlencode($nom);
-    $http .= "&errorNom=" . urlencode($errorNom);
-    $http .= "&tel=" . urlencode($tel);
-    $http .= "&errorNom=" . urlencode($errorTel);
+$http .= "nom=" . urlencode($nom);
+$http .= "&errorNom=" . urlencode($errorNom);
+$http .= "&tel=" . urlencode($tel);
+$http .= "&errorTel=" . urlencode($errorTel);
 
-    // Se recorre el array por clave-valor: $nombre => $telefono
-    foreach ($agenda as $n => $t) {
-        $http .= "&agenda[" . urlencode($n) . "]=" . urlencode($t);
-    }
-} else {
-    // Se recorre el array por clave-valor: $nombre => $telefono
-    foreach ($agenda as $n => $t) {
-        $http .= "&agenda[" . urlencode($n) . "]=" . urlencode($t);
-    }
+// Se recorre el array por clave-valor: $nombre => $telefono
+foreach ($agenda as $n => $t) {
+    $http .= "&agenda[" . urlencode($n) . "]=" . urlencode($t);
 }
 
 header($http);

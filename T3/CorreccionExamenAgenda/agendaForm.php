@@ -1,14 +1,14 @@
 <?php
 
 // leer datos
-$nom = strip_tags($_GET["nom"]) ?? "";
-$tel = strip_tags($_GET["tel"]) ?? "";
-$errorNom = strip_tags($_GET["errorNom"]) ?? "";
-$errorTel = strip_tags($_GET["errorTel"]) ?? "";
-$mensaje = strip_tags($_GET["mensaje"]) ?? "";
+$nom = strip_tags($_GET["nom"] ?? "");
+$tel = strip_tags($_GET["tel"] ?? "");
+$errorNom = strip_tags($_GET["errorNom"] ?? "");
+$errorTel = strip_tags($_GET["errorTel"] ?? "");
+$mensaje = strip_tags($_GET["mensaje"] ?? "");
 
 // agenda es un array asociativo pasado con pares clave-valor: nombre => telefono
-$agenda = strip_tags($_GET["agenda"]) ?? [];
+$agenda = $_GET["agenda"] ?? [];
 
 ?>
 
@@ -22,20 +22,19 @@ $agenda = strip_tags($_GET["agenda"]) ?? [];
 </head>
 
 <body>
-    <textarea disabled>
-        <?php
-
-        if ($agenda != []) {
-            foreach ($agenda as $nombre => $tel) {
-                echo $nombre . " - " . $tel . "<br>";
-            }
+    <textarea><?php
+    if (!empty($agenda)) {
+        foreach ($agenda as $n => $t) {
+            echo htmlspecialchars($n) . " - " . htmlspecialchars($t) . "\n";
         }
-
-        ?>
-    </textarea>
+    }
+    ?></textarea>
 
     <form action="leerAgenda.php" method="post">
-        <input type="hidden" name="agenda" value="<?= $agenda ?>">
+        <!-- Un foreach de inputs porque un array no se puede pasar en un input -->
+        <?php foreach ($agenda as $n => $t): ?>
+            <input type="hidden" name="agenda[<?= htmlspecialchars($n) ?>]" value="<?= htmlspecialchars($t) ?>">
+        <?php endforeach; ?>
 
         <label for="nom">Nombre: </label>
         <input type="text" name="nom" id="nom" value="<?= $nom ?>">
@@ -47,7 +46,7 @@ $agenda = strip_tags($_GET["agenda"]) ?? [];
 
         <label for="tel">Telefono:</label>
         <input type="number" id="tel" name="tel" value="<?= $tel ?>" maxlength="9">
-        <?php 
+        <?php
         if ($errorTel != "") {
             echo "<span style='color: red;'>" . $errorTel . "</span>";
         }
