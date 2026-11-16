@@ -78,7 +78,7 @@ if (isset($_POST["modulo"])) {
     <section>
         <?php
  
-        include "../../../seguridad/tema03/datosBDclase.php";
+        include "../../../../seguridad/tema03/datosBDclase.php";
 
         $canal = @mysqli_connect(IP, USUARIO, CLAVE, BD);
         if (!$canal) {

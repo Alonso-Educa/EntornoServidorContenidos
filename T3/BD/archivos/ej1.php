@@ -32,26 +32,26 @@
             width: 40%;
             margin: 0 auto;
         }
- 
+
         table {
             border-collapse: collapse;
         }
- 
+
         tr:nth-child(even) {
             background-color: #cacaca;
             ----
         }
- 
+
         th {
             background-color: green;
             color: white;
         }
- 
+
         th,
         td {
             padding: 5px;
         }
- 
+
         .arriba {
             border-top: 1px solid black;
         }
@@ -64,7 +64,7 @@
     </header>
     <section>
         <?php
-        include "../../../seguridad/tema03/datosBDbiblioteca.php";
+        include "../../../../seguridad/tema03/datosBDbiblioteca.php";
         // Si se pone @ no se myuestran los errores por pantalla
         $canal = @mysqli_connect(IP, USUARIO, CLAVE, BD);
         if (!$canal) {
@@ -76,7 +76,7 @@
 
         // consulta a la base de datos
         // guarda datos de ordenacion
-        $sql = "select * from `ordenacion` order by titulo asc;";
+        $sql = "select * from `ordenacion` order by posicion asc;";
         // guarda los registros en un array
         $consulta = mysqli_prepare($canal, $sql);
         if (!$consulta) {
@@ -86,6 +86,7 @@
         mysqli_stmt_execute($consulta);
         mysqli_stmt_bind_result($consulta, $posicion, $planta, $seccion, $estanteria, $descripcion);
 
+        echo "<h3>Ordenacion:</h3>";
         echo "<table border='1'>";
         echo "<th>Posición</th><th>Planta</th><th>Sección</th><th>Estantería</th><th>Descripción</th>";
 
@@ -94,41 +95,59 @@
         // recorre cada resultado del array devuelto
         while (mysqli_stmt_fetch($consulta)) {
             echo "<tr>";
-            if ($posAnterior != $dni) {
+            if ($posAnterior != $posicion) {
                 echo "<td class='arriba'>$posicion</td><td class='arriba'>$planta</td><td class='arriba'>$seccion</td><td class='arriba'>$estanteria</td><td class='arriba'>$descripcion</td>";
-                $posAnterior = $dni;
+                $posAnterior = $posicion;
             } else {
                 echo "<td></td><td>$planta</td><td>$planta</td><td>$seccion</td><td>$estanteria</td><td>$descripcion</td>";
             }
             echo "</tr>";
-
-            // consulta a la base de datos para los numeros de cuenta de cada usuario
-            $consulta2 = "select ccc from `posee` where dni='$dato[dni]';";
-            // guarda el array de cuentas
-            $cuentas = mysqli_query($canal, $consulta2);
-
-            $cont = 0;
-            // imprime los datos
-            foreach ($cuentas as $cuenta) {
-                echo "<tr>";
-                if ($cont == 0) {
-                    echo "<td>$dato[nombre]</td>";
-                    echo "<td>$dato[dni]</td>";
-                    echo "<td>$cuenta[ccc]</td>";
-                } else {
-                    // si un usuario tiene mas de una cuenta, despues de la segunda fila solo imprimira el numero de cuenta
-                    echo "<td></td>";
-                    echo "<td></td>";
-                    echo "<td>$cuenta[ccc]</td>";
-                }
-                echo "</tr>";
-                $cont++;
-            }
         }
         echo "</table>";
 
 
+        mysqli_stmt_close($consulta);
         mysqli_close($canal);
+
+        $canal2 = @mysqli_connect(IP, USUARIO, CLAVE, BD);
+        if (!$canal2) {
+            echo "Ha ocurrido el error: " . mysqli_connect_errno() . " " . mysqli_connect_error() . "<br>";
+        }
+
+        mysqli_set_charset($canal2, "utf8");
+
+        // consulta a la base de datos
+        // guarda datos de ordenacion
+        $sql2 = "select * from `libro` order by titulo asc;";
+        // guarda los registros en un array
+        $consulta2 = mysqli_prepare($canal2, $sql2);
+        if (!$consulta2) {
+            echo "Ha ocurrido el error: " . mysqli_errno($canal) . " " . mysqli_error($canal) . "<br />";
+            exit;
+        }
+        mysqli_stmt_execute($consulta2);
+        mysqli_stmt_bind_result($consulta2, $isbn, $titulo, $autor, $tematica, $fecha, $n_paginas, $posicion, $ejemplar, $prestado);
+
+        echo "<h3>Libros:</h3>";
+        echo "<table border='1'>";
+        echo "<th>ISBN</th><th>Título</th><th>Autor</th><th>Temática</th><th>Fecha</th><th>Número de páginas</th><th>Posición</th><th>Ejemplar</th><th>Prestado</th>";
+
+        $posAnterior = "";
+
+        // recorre cada resultado del array devuelto
+        while (mysqli_stmt_fetch($consulta2)) {
+            echo "<tr>";
+            $prestado == "1" ? "Prestado" : "Sin prestar";
+            if ($posAnterior != $posicion) {
+                echo "<td class='arriba'>$posicion</td><td class='arriba'>$titulo</td><td class='arriba'>$autor</td><td class='arriba'>$tematica</td><td class='arriba'>$fecha</td>
+                <td class='arriba'>$n_paginas</td><td class='arriba'>$ejemplar</td><td class='arriba'>$prestado</td><td class='arriba'>$posicion</td>";
+                $posAnterior = $posicion;
+            } else {
+                echo "<td></td><td>$isbn</td><td>$titulo</td><td>$autor</td><td>$tematica</td><td>$fecha</td><td>$n_paginas</td><td>$ejemplar</td><td>$prestado</td>";
+            }
+            echo "</tr>";
+        }
+        echo "</table>";
         ?>
     </section>
 </body>

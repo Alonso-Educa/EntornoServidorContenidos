@@ -63,7 +63,7 @@
         <h3>Ejercicio 2: Consultas a libreria</h3>
     </header>
     <?php
-    include "../../../seguridad/tema03/datosBDbiblioteca.php";
+    include "../../../../seguridad/tema03/datosBDbiblioteca.php";
 
     // CONSULTA 1
     $canal = @mysqli_connect(IP, USUARIO, CLAVE, BD);
